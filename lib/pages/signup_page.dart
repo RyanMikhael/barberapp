@@ -1,15 +1,14 @@
-import 'package:barberapp/pages/home_page.dart';
-import 'package:barberapp/pages/signup_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,6 +21,17 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 65,),
               const Center(child: Image(image: AssetImage('images/Header.png'), width: 292, height: 144,)),
               const SizedBox(height: 50,),
+              const TextField(
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.all(18),
+                  fillColor: Color(0x0000c41e),
+                  hintText: 'Nome',
+                  hintStyle: TextStyle(fontSize: 16),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(8))),
+
+                ),
+              ),
+              const SizedBox(height: 20,),
               const TextField(
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.all(18),
@@ -43,15 +53,11 @@ class _LoginPageState extends State<LoginPage> {
                   suffixIcon: Icon(Icons.password)
 
                 ),
-              ),
-              const SizedBox(height: 8,),
-              const Row(mainAxisAlignment: MainAxisAlignment.end, children: [Text('Esqueceu a sua senha?')],),
-              const SizedBox(height: 20,),
+              ),        
+              const SizedBox(height: 56,),
               SizedBox(
                 width: MediaQuery.of(context).size.width,
-                child: ElevatedButton(onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const HomePage()));
-                }, 
+                child: ElevatedButton(onPressed: (){}, 
                 style: OutlinedButton.styleFrom(backgroundColor: Colors.black, 
                 fixedSize: const Size.fromHeight(50),
                 shape: RoundedRectangleBorder(
@@ -99,10 +105,6 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 )),
               ),
-              const SizedBox(height: 45,),
-              GestureDetector(
-                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const SignUpPage())),
-                child: const Text('Não possui conta? Faça seu registro aqui', style: TextStyle(fontSize: 14),))
               
               
             ],
