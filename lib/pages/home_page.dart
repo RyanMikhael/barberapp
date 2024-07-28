@@ -1,7 +1,5 @@
 import 'package:barberapp/pages/booking_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -21,7 +19,47 @@ class HomePage extends StatelessWidget {
         
       ),
       drawer: Drawer(
-        child: ListView(children: [],),
+        child: ListView(children: const [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: 16),
+                child: CircleAvatar(child:Icon(Icons.person)),
+              ),
+              ListTile(title: Text('Nome do usuário'), subtitle: Text('emaildousuario@gmail.com'),)
+            ],
+          ),
+          Divider(
+            height: 1,
+            thickness: 1,
+          ),
+          ListTile(
+            leading: Icon(Icons.home),
+            title: Text('Página inicial'),
+          ),
+          ListTile(
+            leading: Icon(Icons.person),
+            title: Text('Minha conta'),
+          ),
+          ListTile(
+            leading: Icon(Icons.check),
+            title: Text('Agendamentos'),
+          ),
+          Divider(
+            height: 1,
+            thickness: 1,
+          ),
+          ListTile(
+            leading: Icon(Icons.question_mark),
+            title: Text('Sobre'),
+          ), 
+          ListTile(
+            leading: Icon(Icons.logout),
+            title: Text('Sair da conta'),
+          )
+
+        ],),
       ),
 
       body: Padding(
@@ -42,6 +80,7 @@ class HomePage extends StatelessWidget {
             const SizedBox(height: 20,),
 
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Card(
                   child: Column(
@@ -58,7 +97,6 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(width: 20,),
                 Card(
                   child: Column(
                     children: [
@@ -74,7 +112,6 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(width: 20,),
                 Card(
                   child: Column(
                     children: [
@@ -96,23 +133,28 @@ class HomePage extends StatelessWidget {
             const Text('Todos os serviços', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
             const SizedBox(height: 20,),
 
-            Container(
-              alignment: Alignment.center,
-              decoration: const BoxDecoration(
-                color:  Color.fromRGBO(59, 59, 59, 1.0),
-                borderRadius: BorderRadius.all(Radius.circular(8))
-              ),
-              width: MediaQuery.of(context).size.width,
-              height: 110,
-              child: ListTile(
-                onTap: ()  async {
-                  await Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const BookingPage() ));
-                },
-                leading: const Image(image: AssetImage('images/service.png'),),
-                title: const Text('Nome do serviço',style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),),
-                subtitle: const Text('Informações do serviço', style: TextStyle(fontSize: 14, color: Colors.white),),
-                trailing: const Text("RS 50", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white),),
-
+            Card(
+              elevation: 8,
+              color: const Color.fromRGBO(59, 59, 59, 1.0),
+              shape: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+              child: Container(
+                alignment: Alignment.center,
+                // decoration: const BoxDecoration(
+                //   color:  Color.fromRGBO(59, 59, 59, 1.0),
+                //   borderRadius: BorderRadius.all(Radius.circular(8))
+                // ),
+                width: MediaQuery.of(context).size.width,
+                height: 110,
+                child: ListTile(
+                  onTap: ()  async {
+                    await Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const BookingPage() ));
+                  },
+                  leading: const Image(image: AssetImage('images/service.png'),),
+                  title: const Text('Nome do serviço',style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),),
+                  subtitle: const Text('Informações do serviço', style: TextStyle(fontSize: 14, color: Colors.white),),
+                  trailing: const Text("RS 50", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white),),
+              
+                ),
               ),
             )
           ],
